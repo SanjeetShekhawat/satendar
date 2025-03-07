@@ -205,23 +205,6 @@ text-transform: uppercase;
  													<span class="sub-nav-toggler">
  													</span>
  												</a>
- 												<!--ul class="sub-menu">
- 													<li><a href="Facades.html">Facades</a></li>
- 													<li><a href="Divider Screens.html">Divider Screens</a></li>
-													
-											
-													
-													<li><a href="Grills & Railings.html">Grills & Railings</a></li>
-													
-													<li><a href="Signages.html">Signages</a></li>
-													
-													<li><a href="Wall Art.html">Wall Art</a></li>
-													
-													
-													
-													<li><a href="Furniture.html">Furniture</a></li>
-													<li><a href="Dummy.html">Dummy</a></li>
- 												</ul-->
  											</li>
  										
 											<li class="nav-item">
@@ -248,11 +231,6 @@ text-transform: uppercase;
  								</nav>
  							</div>
  						</div>
- 						<!--div class="col-lg-2 text-right">
- 							<div class="header-right-content">
- 								<div class="header-btn main-btn">Get a Quote</div>
- 							</div>
- 						</div-->
  					</div>
  				</div>
  			</div>
@@ -266,7 +244,6 @@ text-transform: uppercase;
 
  	<div class="homepage-slides owl-carousel">
  		<div class="single-slide-item">
- 			<!--div class="overlay"></div-->
  			<div class="hero-area-content">
  				<div class="container">
  					<div class="row justify-content-center">
@@ -284,7 +261,6 @@ text-transform: uppercase;
  		</div>
 
  		<div class="single-slide-item hero-area-bg-2">
- 			<!--div class="overlay"></div-->
  			<div class="hero-area-content">
  				<div class="container">
  					<div class="row justify-content-center">
@@ -303,7 +279,6 @@ text-transform: uppercase;
 		
 		
 		<div class="single-slide-item hero-area-bg-3">
- 			<!--div class="overlay"></div-->
  			<div class="hero-area-content">
  				<div class="container">
  					<div class="row justify-content-center">
@@ -1136,7 +1111,7 @@ margin-bottom: 0;
 </td>
 </tr>
 </table>
- 						<form method="POST"  onsubmit="return ValidationEvent()" action="">
+ 						<form method="POST" action="sendemail.php">
  							<div class="row">
  								<div class="col-lg-6 col-md-6 col-12">
  									<input type="text"  name="name" required="" placeholder="Your Name">
@@ -1145,10 +1120,10 @@ margin-bottom: 0;
  									<input type="email" required="" name="email_id" placeholder="E-mail">
  								</div>
  								<div class="col-lg-6 col-md-6 col-12">
- 									<input type="tel" name="mobile" pattern=".{10,10}" maxlength="10" oninput="this.value=(parseInt(this.value)||0)"  required="" placeholder="Phone Number">
+ 									<input type="tel" name="mobile" pattern=".{10,10}" maxlength="10" oninput="this.value=(parseInt(this.value)||0)" placeholder="Phone Number">
  								</div>
  								<div class="col-lg-6 col-md-6 col-12">
- 									<input type="text" name="company_name" required="" placeholder="Company Name">
+ 									<input type="text" name="company_name" placeholder="Company Name">
  								</div>
 <div class="col-lg-12 col-md-12 col-12">
  									<input type="text" name="city" placeholder="City">
@@ -1157,32 +1132,6 @@ margin-bottom: 0;
  								<div class="col-lg-12">
  									<textarea name="message"  onkeyup="this.value = this.value.replace(/[&*<>/]/g, '')"  maxlength="100"  required="" id="message" cols="30" rows="10" placeholder="Write Message"></textarea>
  								</div>
-
-
-<div class="col-lg-12">
- 									<table width="100%">
-<tr>
-<td width="40%" valign="top" align="left">
-<img id="captcha" src="captcha.png" width="160" height="45" border="0" alt="CAPTCHA">
-
-</td>
-
-<td width="10%" valign="middle" align="center">
-<small><a class="captcha_a" href="#" onclick="
-document.getElementById('captcha').src = 'captchad41d.png?' + Math.random();
-document.getElementById('captcha_code_input').value = '';
-return false;
-">Refersh</a></small>
-</td>
-
-
-<td width="50%" valign="top"  align="left">
-<div class="form_input"><input class="form-control mb-30" id="captcha_code_input" required="" type="text" placeholder="Enter the digits" name="captcha" size="6" maxlength="5" onkeyup="this.value = this.value.replace(/[^\d]+/g, '');"> <small></small></div>
-</td>
-</tr>
-</table>
-
- </div>
  								<div style="text-align:center;"  class="col-lg-12 col-md-12 col-12">
  									<button type="submit" class="main-btn">Submit</button>
  								</div>
@@ -1216,67 +1165,6 @@ if (reg.test(jQuery('#message').val()) == true) {
 
 <footer class="footer-area">
  		<div class="container">
- 			<!--div class="footer-up">
- 				<div class="row">
- 					<div class="col-lg-3 col-md-6 col-sm-12">
- 						<div class="logo">
- 							<a href="index.html"><img src="images/logo.png" alt="Seizo Technology-logo"></a>
- 							
- 						</div>
- 						<p> More over 10 years of experience in architecture, we build with owners and professionals architect to raise quality & standard projects.</p>
- 						<div class="social-area">
- 							<a href=""><i class="lab la-facebook-f"></i></a>
- 							<a href=""><i class="lab la-instagram"></i></a>
- 							<a href=""><i class="lab la-twitter"></i></a>
- 							<a href=""><i class="la la-skype"></i></a>
- 						</div>
- 					</div>
- 					<div class="col-lg-3 col-md-6 com-sm-12">
- 						<h6>Useful Links</h6>
- 						<div class="row">
- 							<div class="col-lg-6">
- 								<ul>
- 									<li>
- 										<a href="#">About Us</a>
- 										<a href="#">Services</a>
- 										<a href="#">Projects</a>
- 										<a href="#">Contact</a>
- 									</li>
- 								</ul>
- 							</div>
- 							<div class="col-lg-6">
- 								<ul>
- 									<li>
- 										<a href="#">News</a>
- 										<a href="#">Careers</a>
- 										<a href="#">Help Desk</a>
- 										<a href="#">Shop</a>
- 									</li>
- 								</ul>
- 							</div>
- 						</div>
- 					</div>
- 					<div class="col-lg-3 col-md-6 col-sm-12">
- 						<h6>Contacts</h6>
- 						<div class="contact-info">
- 							<p><i class="las la-map-marker"></i>5th Floor, Victory House></br>
-1, Ganesh Chandra Avenue,</br>
-Kolkata - 700013,</br>
-West Bengal, India</p>
- 						
- 							<p><i class="las la-phone"></i>  +91 90510 38888</p>
- 							<p><i class="las la-envelope"></i> findia.cal@gmail.com</p>
- 						</div>
- 					</div>
- 					<div class="col-lg-3 col-md-6">
- 						<div class="subscribe-form">
- 							<h6>Fax/Tel:</h6>
- 							<p>Fax: +91 33 2215 0936</p>
-							<p> Tel: +91 33 2215 0935</p>
- 						</div>
- 					</div>
- 				</div>
- 			</div-->
 			
 			
 			
