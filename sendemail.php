@@ -1,33 +1,41 @@
 <?php
-echo "hellohellohellohello";
-// send_email.php
+require 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect the form data
     $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars("gsa.sanjeet@gmail.com");
+    $email = htmlspecialchars('gsa.sanjeet@gmail.com');
     $message = htmlspecialchars($_POST['message']);
 
-    // Set the recipient email address (your email)
-    $to = "sanjeetshekhawat2@gmail.com"; // Replace with your email address
-    $subject = "New Contact Us Message from $name";
+    $mail = new PHPMailer(true);
 
-    // Create the email body
-    $email_message = "Name: $name\n";
-    $email_message .= "Email: $email\n";
-    $email_message .= "Message:\n$message\n";
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'beltechnology38@gmail.com';
+        $mail->Password = 'fqlfksnsrbxomewi';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
 
-    // Set the email headers
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $mail->setFrom($email, $name);
+        $mail->addAddress('sanjeetshekhawat2@gmail.com', 'Sanjeet');
+        $mail->Subject = "New Contact Us Message from $name";
+        $mail->Body    = "Name: $name\nEmail: $email\nMessage: $message";
 
-    // Send the email
-    if (mail($to, $subject, $email_message, $headers)) {
-        // Redirect to a thank you page after successful submission
-        header("Location: about_us.html"); // Replace with your thank you page URL
-        exit();  // Ensure the script stops executing
-    } else {
-        echo "Sorry, something went wrong and we couldn't send your message.";
+        if ($mail->send()) {
+            header("Location: index.html");
+            exit();
+        } else {
+            header("Location: error_page.php?error=" . urlencode($mail->ErrorInfo));
+            exit();
+        }
+    } catch (Exception $e) {
+        header("Location: error_page.php?error=" . urlencode($e->getMessage()));
+        exit();
     }
 }
 ?>
