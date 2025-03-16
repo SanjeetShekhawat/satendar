@@ -3703,3 +3703,11 @@ a.reply-btn {
  max-width: 100% !important;
 }
 }
+@media (max-width: 540px){
+.logo a img{
+	width: 113px;
+}
+.navigation{
+	padding: 0px 0px !important;
+}
+}
