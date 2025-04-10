@@ -34,7 +34,9 @@
  	<link href="assets/css/style.css" rel="stylesheet">
  	<!-- Responsive CSS -->
  	<link href="assets/css/responsive.css" rel="stylesheet">
-
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>	 
  	<!-- jquery -->
  	<script src="assets/js/jquery-1.12.4.min.js"></script>
 	
@@ -1130,25 +1132,30 @@ margin-bottom: 0;
  								</div>
  							</div>
  						</form>
-
 <script>
+$(document).ready(function() {
+	$('form').on('submit', function(e) {
+		e.preventDefault(); // Prevent normal submit
 
-function ValidationEvent()
-{
-
-var reg = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-
-
-if (reg.test(jQuery('#message').val()) == true) {
-    
- 
-    alert('Special Charater Not Allowed');
-    
-    return false;
-
-    }
-}
-
+		$.ajax({
+			type: 'POST',
+			url: 'sendemail.php',
+			data: $(this).serialize(),
+			dataType: 'json',
+			success: function(response) {
+				if (response.status === 'success') {
+					toastr.success("Message sent successfully!");
+					$('form')[0].reset(); // Reset the form
+				} else {
+					toastr.error("Message failed to send. Please try again.");
+				}
+			},
+			error: function() {
+				toastr.error("Something went wrong. Please try again.");
+			}
+		});
+	});
+});
 </script>
  					</div>
  				</div>

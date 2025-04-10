@@ -34,6 +34,9 @@
  	<link href="assets/css/style.css" rel="stylesheet">
  	<!-- Responsive CSS -->
  	<link href="assets/css/responsive.css" rel="stylesheet">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
  	<!-- jquery -->
  	<script src="assets/js/jquery-1.12.4.min.js"></script>
@@ -1016,7 +1019,7 @@ jQuery(document).ready(function(){
 </td>
 </tr>
 </table>
- 						<form method="POST"  onsubmit="return ValidationEvent()" action="https://www.seizotechnology.com/home_contact_submit.php">
+ 						<form method="POST"  action="sendemail.php">
  							<div class="row">
  								<div class="col-lg-6 col-md-6 col-12">
  									<input type="text"  name="name" required="" placeholder="Your Name">
@@ -1044,23 +1047,29 @@ jQuery(document).ready(function(){
  						</form>
 
 <script>
-
-function ValidationEvent()
-{
-
-var reg = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-
-
-if (reg.test(jQuery('#message').val()) == true) {
-    
- 
-    alert('Special Charater Not Allowed');
-    
-    return false;
-
-    }
-}
-
+	$(document).ready(function() {
+		$('form').on('submit', function(e) {
+			e.preventDefault(); // Prevent normal submit
+	
+			$.ajax({
+				type: 'POST',
+				url: 'sendemail.php',
+				data: $(this).serialize(),
+				dataType: 'json',
+				success: function(response) {
+					if (response.status === 'success') {
+						toastr.success("Message sent successfully!");
+						$('form')[0].reset(); // Reset the form
+					} else {
+						toastr.error("Message failed to send. Please try again.");
+					}
+				},
+				error: function() {
+					toastr.error("Something went wrong. Please try again.");
+				}
+			});
+		});
+	});
 </script>
  					</div>
  				</div>

@@ -27,15 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body    = "Name: $name\nEmail: $email\nMessage: $message";
 
         if ($mail->send()) {
-            header("Location: index.html");
-            exit();
+            echo json_encode(["status" => "success"]);
         } else {
-            header("Location: error_page.php?error=" . urlencode($mail->ErrorInfo));
-            exit();
+            echo json_encode(["status" => "error"]);
         }
     } catch (Exception $e) {
-        header("Location: error_page.php?error=" . urlencode($e->getMessage()));
-        exit();
+        echo json_encode(["status" => "error"]);
     }
 }
 ?>

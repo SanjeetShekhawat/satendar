@@ -35,6 +35,9 @@
  	<link href="assets/css/style.css" rel="stylesheet">
  	<!-- Responsive CSS -->
  	<link href="assets/css/responsive.css" rel="stylesheet">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
  	<!-- jquery -->
  	<script src="assets/js/jquery-1.12.4.min.js"></script>
@@ -691,7 +694,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </td>
 </tr>
 </table>
- 						<form method="POST"  onsubmit="return ValidationEvent()" action="https://www.seizotechnology.com/home_contact_submit.php">
+ 						<form method="POST"  action="sendemail.php">
  							<div class="row">
  								<div class="col-lg-6 col-md-6 col-12">
  									<input type="text"  name="name" required="" placeholder="Your Name">
