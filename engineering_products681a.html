@@ -1195,53 +1195,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </td>
 </tr>
 </table>
- 						<form method="POST"  action="sendemail.php">
- 							<div class="row">
- 								<div class="col-lg-6 col-md-6 col-12">
- 									<input type="text"  name="name" required="" placeholder="Your Name">
- 								</div>
- 								<div class="col-lg-6 col-md-6 col-12">
- 									<input type="email" required="" name="email_id" placeholder="E-mail">
- 								</div>
- 								<div class="col-lg-6 col-md-6 col-12">
- 									<input type="tel" name="mobile" pattern=".{10,10}" maxlength="10" oninput="this.value=(parseInt(this.value)||0)"  required="" placeholder="Phone Number">
- 								</div>
- 								<div class="col-lg-6 col-md-6 col-12">
- 									<input type="text" name="company_name" required="" placeholder="Company Name">
- 								</div>
+						<form method="POST"  action="sendemail.php">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-12">
+									<input type="text"  name="name" required="" placeholder="Your Name">
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<input type="email" required="" name="email_id" placeholder="E-mail">
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<input type="tel" name="mobile" pattern=".{10,10}" maxlength="10" oninput="this.value=(parseInt(this.value)||0)"  required="" placeholder="Phone Number">
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<input type="text" name="company_name" required="" placeholder="Company Name">
+								</div>
 <div class="col-lg-12 col-md-12 col-12">
- 									<input type="text" name="city" placeholder="City">
- 								</div>
+									<input type="text" name="city" placeholder="City">
+								</div>
 
- 								<div class="col-lg-12">
- 									<textarea name="message"  onkeyup="this.value = this.value.replace(/[&*<>/]/g, '')"  maxlength="100"  required="" id="message" cols="30" rows="10" placeholder="Write Message"></textarea>
- 								</div>
+								<div class="col-lg-12">
+									<textarea name="message"  onkeyup="this.value = this.value.replace(/[&*<>/]/g, '')"  maxlength="100"  required="" id="message" cols="30" rows="10" placeholder="Write Message"></textarea>
+								</div>
 
 
- 								<div style="text-align:center;"  class="col-lg-12 col-md-12 col-12">
- 									<button type="submit" class="main-btn">Submit</button>
- 								</div>
- 							</div>
- 						</form>
+								<div style="text-align:center;"  class="col-lg-12 col-md-12 col-12">
+									<button type="submit" class="main-btn">Submit</button>
+								</div>
+							</div>
+						</form>
 
 <script>
-
-function ValidationEvent()
-{
-
-var reg = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-
-
-if (reg.test(jQuery('#message').val()) == true) {
-    
- 
-    alert('Special Charater Not Allowed');
-    
-    return false;
-
-    }
-}
-
+	$(document).ready(function() {
+		$('form').on('submit', function(e) {
+			e.preventDefault(); // Prevent normal submit
+	
+			$.ajax({
+				type: 'POST',
+				url: 'sendemail.php',
+				data: $(this).serialize(),
+				dataType: 'json',
+				success: function(response) {
+					if (response.status === 'success') {
+						toastr.success("Message sent successfully!");
+						$('form')[0].reset(); // Reset the form
+					} else {
+						toastr.error("Message failed to send. Please try again.");
+					}
+				},
+				error: function() {
+					toastr.error("Something went wrong. Please try again.");
+				}
+			});
+		});
+	});
 </script>
  					</div>
  				</div>
