@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'beltechnology38@gmail.com';
-        $mail->Password = 'fqlfksnsrbxomewi';
+        $mail->Username = 'sanjeetshekhawat2@gmail.com';
+        $mail->Password = 'nrvuzukeqajdtamm';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         $mail->setFrom($email, $name);
-        $mail->addAddress('sanjeetshekhawat2@gmail.com', 'Sanjeet');
+        $mail->addAddress('admin@seizotechnology.com', 'Saurabh');
         $mail->Subject = "New Contact Us Message from $name";
         $mail->Body    = "Name: $name\nEmail: $email\nMessage: $message";
 
